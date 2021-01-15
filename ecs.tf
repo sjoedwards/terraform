@@ -1,3 +1,4 @@
+# ECS = elastic cluster service
 resource "aws_ecs_cluster" "main" {
   name = "${var.ecs_service_name}-cluster"
 }
@@ -15,7 +16,7 @@ resource "aws_ecs_task_definition" "nginx" {
     [
       {
         name        = "nginx"
-        image       = data.aws_ecr_repository.ecr_repo_nginx.repository_url
+        image       = aws_ecr_repository.ecr_repo_nginx.repository_url
         cpu         = var.nginx_fargate_cpu
         memory      = var.nginx_fargate_memory
         networkMode = "awsvpc"
@@ -37,7 +38,7 @@ resource "aws_ecs_task_definition" "nginx" {
       {
         # Can refer internally to the app by the name
         name   = "app"
-        image  = data.aws_ecr_repository.ecr_repo_app.repository_url
+        image  = aws_ecr_repository.ecr_repo_app.repository_url
         cpu    = var.app_fargate_cpu
         memory = var.app_fargate_memory
         # Using Fargate means we must use awsvpc

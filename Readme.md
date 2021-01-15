@@ -6,11 +6,9 @@ For addition of NGNIX following [this link](https://techsparx.com/nodejs/docker/
 
 ### Create Docker Registries
 
-- terraform init
-  `terraform init`
+`terraform apply -target=aws_ecr_repository.ecr_repo_app`
 
-- terraform apply
-  `terraform apply`
+`terraform plan -target=aws_ecr_repository.ecr_repo_app`
 
 Go to Amazon ECR to ensure the repos are there
 
@@ -60,6 +58,9 @@ Check ECR to ensure pushed successfully
 
 - terraform init
   `terraform init`
+
+- terraform plan
+  `terraform plan`
 
 - terraform apply
   `terraform apply`

@@ -47,11 +47,6 @@ variable "nginx_fargate_memory" {
   default     = 512
 }
 
-variable "app_port" {
-  description = "Port exposed by the app docker image"
-  default     = 3000
-}
-
 variable "app_count" {
   description = "Number of back-end application containers to run"
   default     = 2
