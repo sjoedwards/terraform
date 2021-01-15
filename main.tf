@@ -1,12 +1,11 @@
-provider "aws" {
-  version = "~> 2.0"
-  region  = "eu-west-2" # Setting my region to London.
-}
-
-
 # Create ECR Repo
 resource "aws_ecr_repository" "my_first_ecr_repo" {
   name = "sjoedwards-ecr-demo" # Naming my repository
+}
+
+# Create ECR Repo
+resource "aws_ecr_repository" "ecr_repo_nginx" {
+  name = "sjoedwards-ecr-nginx" # Naming my repository
 }
 
 # Create ECS Cluster
@@ -105,10 +104,6 @@ resource "aws_security_group" "service_security_group" {
     protocol    = "-1"          # Allowing any outgoing protocol 
     cidr_blocks = ["0.0.0.0/0"] # Allowing traffic out to all IP addresses
   }
-}
-
-# Providing a reference to our default VPC
-resource "aws_default_vpc" "default_vpc" {
 }
 
 # Providing a reference to our default subnets
