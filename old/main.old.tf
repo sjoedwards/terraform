@@ -1,3 +1,15 @@
+variable "aws_region" {
+  description = "The AWS region things are created in"
+  default     = "eu-west-2"
+}
+
+
+# Specify the provider and access details
+provider "aws" {
+  shared_credentials_file = "$HOME/.aws/credentials"
+  region                  = var.aws_region
+}
+
 # Create ECR Repo
 resource "aws_ecr_repository" "my_first_ecr_repo" {
   name = "sjoedwards-ecr-demo" # Naming my repository
